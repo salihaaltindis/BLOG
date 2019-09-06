@@ -38,7 +38,7 @@ namespace GUNLUK.Admin
                 txtBASLIK.Text = y.BASLIK;
                 ddlDURUMU.SelectedValue = y.DURUMU.ToString();
                 ddlKATEGORI_REFNO.SelectedValue = y.KATEGORI_REFNO.ToString();
-                //fileUploadRESIM eklenecek
+                //fileUploadRESIM eklenecek buaraya
             }
             pnlKayit.Visible = true;
             pnlListe.Visible = false;
