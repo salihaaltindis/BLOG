@@ -1,0 +1,22 @@
+﻿body {
+}
+
+#sol{
+    width:200px;
+    min-height:800px;
+    background-color:aquamarine;
+    float:left;
+}
+
+#sag{
+    width:800px;
+    min-height:800px;
+    background-color:deepskyblue;
+}
+#footer{
+    height:50px;
+    background-color:gray;
+    color:white;
+    font-size:20px;
+    width:1000px;
+}
