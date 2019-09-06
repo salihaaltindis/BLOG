@@ -1,6 +1,12 @@
 ﻿body {
 }
 
+* {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
 #sol{
     width:200px;
     min-height:800px;
@@ -8,10 +14,11 @@
     float:left;
 }
 
-#sag{
-    width:800px;
-    min-height:800px;
-    background-color:deepskyblue;
+#sag {
+    width: 800px;
+    min-height: 800px;
+    float: left;
+    background-color: deepskyblue;
 }
 #footer{
     height:50px;
@@ -19,4 +26,24 @@
     color:white;
     font-size:20px;
     width:1000px;
+    clear:both;
+}
+
+#vesikaresim{
+    border-radius: 100px;
+    height: 200px;
+    width: 200px;
+}
+
+#ana{
+    margin:auto;
+}
+
+
+.resimyuvarla{
+    border-radius:30px;
+}
+
+.sonyazilar{
+    margin:30px;
 }

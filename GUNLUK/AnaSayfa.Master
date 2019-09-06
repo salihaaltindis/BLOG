@@ -12,19 +12,42 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
+    
+        <form id="form1" runat="server">
+        <div id="ana">
+                <div id="sol">
+                    <div>
+                        <img id="vesikaresim" src="Images/vesikalikresim.jpg"/>
+                    </div>
+                    <div id="kategori">
+                        <asp:DataList ID="DataList1" runat="server" Width="100%">
+                            <ItemTemplate>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/Yazilar.aspx?kategori_id="+Eval("KATEGORI_REFNO") %>' 
+                                    Text='<%# Eval("KATEGORI_ADI") %>'></asp:HyperLink>
+                            </ItemTemplate>
+                        </asp:DataList>
+                    </div>
+                    <div id="encokokunan">
+                         <asp:DataList ID="DataList2" runat="server" Width="100%">
+                             <ItemTemplate>
+                                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# "~/YaziDetay.aspx?yazi_refno="+Eval("YAZI_REFNO") %>' Text='<%# Eval("BASLIK") %>'></asp:HyperLink>
+                             </ItemTemplate>
+                   
+                        </asp:DataList>
+                    </div>
+                </div>
+                <div id="sag">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
-        <div id="sol">
-            SOL
-        </div>
-        <div id="sag">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
+                    </asp:ContentPlaceHolder>
+                </div>
 
-        <div id="footer">
-            FOOTER
-        </div>
-    </form>
+                <div id="footer">
+                    FOOTER
+                </div>
+         </div>
+        </form>
+
+
 </body>
 </html>

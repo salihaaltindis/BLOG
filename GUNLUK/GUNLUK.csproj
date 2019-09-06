@@ -733,6 +733,10 @@
     <Content Include="ckfinder\skins\v1\uipanel.css" />
     <Content Include="ckfinder\translations.txt" />
     <Content Include="Default.aspx" />
+    <Content Include="Images\CkResimler\Programlar\kamp.png" />
+    <Content Include="Images\resim2.jpg" />
+    <Content Include="Images\resim3.jpg" />
+    <Content Include="Images\vesikalikresim.jpg" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -878,6 +882,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\CkResimler\flash\" />
+    <Folder Include="Images\CkResimler\resimler\" />
+    <Folder Include="Resimler\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

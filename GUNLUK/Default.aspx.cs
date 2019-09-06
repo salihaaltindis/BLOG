@@ -9,7 +9,14 @@ namespace GUNLUK
 {
     public partial class Default : System.Web.UI.Page
     {
+        BLOGEntities db = new BLOGEntities();
         protected void Page_Load(object sender, EventArgs e)
+        {
+            DataList1.DataSource = db.YAZIs.OrderByDescending(y=>y.TARIH).Take(5).ToList();
+            DataList1.DataBind();
+        }
+
+        protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
