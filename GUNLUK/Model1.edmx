@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BLOGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="KATEGORI">
+          <Key>
+            <PropertyRef Name="KATEGORI_REFNO" />
+          </Key>
+          <Property Name="KATEGORI_REFNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KATEGORI_ADI" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KULLANICI">
+          <Key>
+            <PropertyRef Name="KULLANICI_REFNO" />
+          </Key>
+          <Property Name="KULLANICI_REFNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KULLANICI_ADI" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PAROLA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DURUMU" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SAYFA">
+          <Key>
+            <PropertyRef Name="SAYFA_REFNO" />
+          </Key>
+          <Property Name="SAYFA_REFNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BASLIK" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ICERIK" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="YAZI">
+          <Key>
+            <PropertyRef Name="YAZI_REFNO" />
+          </Key>
+          <Property Name="YAZI_REFNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BASLIK" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ICERIK" Type="varchar(max)" Nullable="false" />
+          <Property Name="TARIH" Type="date" Nullable="false" />
+          <Property Name="DURUMU" Type="bit" Nullable="false" />
+          <Property Name="KATEGORI_REFNO" Type="int" Nullable="false" />
+          <Property Name="TIKLANMA_SAYISI" Type="int" Nullable="false" />
+          <Property Name="OZET" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="RESIM" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="YORUM">
+          <Key>
+            <PropertyRef Name="YORUM_REFNO" />
+          </Key>
+          <Property Name="YORUM_REFNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YAZI_REFNO" Type="int" Nullable="false" />
+          <Property Name="MAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DURUMU" Type="bit" Nullable="false" />
+          <Property Name="TARIH" Type="date" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ICERIK" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ADI_SOYADI" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BLOG.dbo.VW_YAZI' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_YAZI">
+          <Key>
+            <PropertyRef Name="YAZI_REFNO" />
+            <PropertyRef Name="BASLIK" />
+            <PropertyRef Name="ICERIK" />
+            <PropertyRef Name="TARIH" />
+            <PropertyRef Name="OZET" />
+            <PropertyRef Name="TIKLANMA_SAYISI" />
+            <PropertyRef Name="KATEGORI_REFNO" />
+            <PropertyRef Name="DURUMU" />
+            <PropertyRef Name="KATEGORI_ADI" />
+          </Key>
+          <Property Name="YAZI_REFNO" Type="int" Nullable="false" />
+          <Property Name="BASLIK" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ICERIK" Type="varchar(max)" Nullable="false" />
+          <Property Name="TARIH" Type="date" Nullable="false" />
+          <Property Name="RESIM" Type="varchar" MaxLength="50" />
+          <Property Name="OZET" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="TIKLANMA_SAYISI" Type="int" Nullable="false" />
+          <Property Name="KATEGORI_REFNO" Type="int" Nullable="false" />
+          <Property Name="DURUMU" Type="bit" Nullable="false" />
+          <Property Name="KATEGORI_ADI" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BLOG.dbo.VW_YAZI_YORUM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_YAZI_YORUM">
+          <Key>
+            <PropertyRef Name="BASLIK" />
+            <PropertyRef Name="YORUM_REFNO" />
+            <PropertyRef Name="YAZI_REFNO" />
+            <PropertyRef Name="MAIL" />
+            <PropertyRef Name="DURUMU" />
+            <PropertyRef Name="IP" />
+            <PropertyRef Name="TARIH" />
+            <PropertyRef Name="ICERIK" />
+          </Key>
+          <Property Name="BASLIK" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="YORUM_REFNO" Type="int" Nullable="false" />
+          <Property Name="YAZI_REFNO" Type="int" Nullable="false" />
+          <Property Name="MAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DURUMU" Type="bit" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TARIH" Type="date" Nullable="false" />
+          <Property Name="ICERIK" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ADI_SOYADI" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_YAZI_KATEGORI">
+          <End Role="KATEGORI" Type="Self.KATEGORI" Multiplicity="1" />
+          <End Role="YAZI" Type="Self.YAZI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KATEGORI">
+              <PropertyRef Name="KATEGORI_REFNO" />
+            </Principal>
+            <Dependent Role="YAZI">
+              <PropertyRef Name="KATEGORI_REFNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YORUM_YAZI">
+          <End Role="YAZI" Type="Self.YAZI" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="YORUM" Type="Self.YORUM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YAZI">
+              <PropertyRef Name="YAZI_REFNO" />
+            </Principal>
+            <Dependent Role="YORUM">
+              <PropertyRef Name="YAZI_REFNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BLOGModelStoreContainer">
+          <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KULLANICI" EntityType="Self.KULLANICI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAYFA" EntityType="Self.SAYFA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YAZI" EntityType="Self.YAZI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YORUM" EntityType="Self.YORUM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VW_YAZI" EntityType="Self.VW_YAZI" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_YAZI].[YAZI_REFNO] AS [YAZI_REFNO], 
+    [VW_YAZI].[BASLIK] AS [BASLIK], 
+    [VW_YAZI].[ICERIK] AS [ICERIK], 
+    [VW_YAZI].[TARIH] AS [TARIH], 
+    [VW_YAZI].[RESIM] AS [RESIM], 
+    [VW_YAZI].[OZET] AS [OZET], 
+    [VW_YAZI].[TIKLANMA_SAYISI] AS [TIKLANMA_SAYISI], 
+    [VW_YAZI].[KATEGORI_REFNO] AS [KATEGORI_REFNO], 
+    [VW_YAZI].[DURUMU] AS [DURUMU], 
+    [VW_YAZI].[KATEGORI_ADI] AS [KATEGORI_ADI]
+    FROM [dbo].[VW_YAZI] AS [VW_YAZI]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_YAZI_YORUM" EntityType="Self.VW_YAZI_YORUM" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_YAZI_YORUM].[BASLIK] AS [BASLIK], 
+    [VW_YAZI_YORUM].[YORUM_REFNO] AS [YORUM_REFNO], 
+    [VW_YAZI_YORUM].[YAZI_REFNO] AS [YAZI_REFNO], 
+    [VW_YAZI_YORUM].[MAIL] AS [MAIL], 
+    [VW_YAZI_YORUM].[DURUMU] AS [DURUMU], 
+    [VW_YAZI_YORUM].[IP] AS [IP], 
+    [VW_YAZI_YORUM].[TARIH] AS [TARIH], 
+    [VW_YAZI_YORUM].[ICERIK] AS [ICERIK], 
+    [VW_YAZI_YORUM].[ADI_SOYADI] AS [ADI_SOYADI]
+    FROM [dbo].[VW_YAZI_YORUM] AS [VW_YAZI_YORUM]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_YAZI_KATEGORI" Association="Self.FK_YAZI_KATEGORI">
+            <End Role="KATEGORI" EntitySet="KATEGORI" />
+            <End Role="YAZI" EntitySet="YAZI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YORUM_YAZI" Association="Self.FK_YORUM_YAZI">
+            <End Role="YAZI" EntitySet="YAZI" />
+            <End Role="YORUM" EntitySet="YORUM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BLOGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="KATEGORI">
+          <Key>
+            <PropertyRef Name="KATEGORI_REFNO" />
+          </Key>
+          <Property Name="KATEGORI_REFNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KATEGORI_ADI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="YAZIs" Relationship="Self.FK_YAZI_KATEGORI" FromRole="KATEGORI" ToRole="YAZI" />
+        </EntityType>
+        <EntityType Name="KULLANICI">
+          <Key>
+            <PropertyRef Name="KULLANICI_REFNO" />
+          </Key>
+          <Property Name="KULLANICI_REFNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KULLANICI_ADI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAROLA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DURUMU" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SAYFA">
+          <Key>
+            <PropertyRef Name="SAYFA_REFNO" />
+          </Key>
+          <Property Name="SAYFA_REFNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BASLIK" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ICERIK" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="YAZI">
+          <Key>
+            <PropertyRef Name="YAZI_REFNO" />
+          </Key>
+          <Property Name="YAZI_REFNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BASLIK" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ICERIK" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TARIH" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DURUMU" Type="Boolean" Nullable="false" />
+          <Property Name="KATEGORI_REFNO" Type="Int32" Nullable="false" />
+          <Property Name="TIKLANMA_SAYISI" Type="Int32" Nullable="false" />
+          <Property Name="OZET" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RESIM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="KATEGORI" Relationship="Self.FK_YAZI_KATEGORI" FromRole="YAZI" ToRole="KATEGORI" />
+          <NavigationProperty Name="YORUMs" Relationship="Self.FK_YORUM_YAZI" FromRole="YAZI" ToRole="YORUM" />
+        </EntityType>
+        <EntityType Name="YORUM">
+          <Key>
+            <PropertyRef Name="YORUM_REFNO" />
+          </Key>
+          <Property Name="YORUM_REFNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YAZI_REFNO" Type="Int32" Nullable="false" />
+          <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DURUMU" Type="Boolean" Nullable="false" />
+          <Property Name="TARIH" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ICERIK" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADI_SOYADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="YAZI" Relationship="Self.FK_YORUM_YAZI" FromRole="YORUM" ToRole="YAZI" />
+        </EntityType>
+        <EntityType Name="VW_YAZI">
+          <Key>
+            <PropertyRef Name="YAZI_REFNO" />
+            <PropertyRef Name="BASLIK" />
+            <PropertyRef Name="ICERIK" />
+            <PropertyRef Name="TARIH" />
+            <PropertyRef Name="OZET" />
+            <PropertyRef Name="TIKLANMA_SAYISI" />
+            <PropertyRef Name="KATEGORI_REFNO" />
+            <PropertyRef Name="DURUMU" />
+            <PropertyRef Name="KATEGORI_ADI" />
+          </Key>
+          <Property Name="YAZI_REFNO" Type="Int32" Nullable="false" />
+          <Property Name="BASLIK" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ICERIK" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TARIH" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RESIM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OZET" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIKLANMA_SAYISI" Type="Int32" Nullable="false" />
+          <Property Name="KATEGORI_REFNO" Type="Int32" Nullable="false" />
+          <Property Name="DURUMU" Type="Boolean" Nullable="false" />
+          <Property Name="KATEGORI_ADI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VW_YAZI_YORUM">
+          <Key>
+            <PropertyRef Name="BASLIK" />
+            <PropertyRef Name="YORUM_REFNO" />
+            <PropertyRef Name="YAZI_REFNO" />
+            <PropertyRef Name="MAIL" />
+            <PropertyRef Name="DURUMU" />
+            <PropertyRef Name="IP" />
+            <PropertyRef Name="TARIH" />
+            <PropertyRef Name="ICERIK" />
+          </Key>
+          <Property Name="BASLIK" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YORUM_REFNO" Type="Int32" Nullable="false" />
+          <Property Name="YAZI_REFNO" Type="Int32" Nullable="false" />
+          <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DURUMU" Type="Boolean" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TARIH" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ICERIK" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADI_SOYADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_YAZI_KATEGORI">
+          <End Role="KATEGORI" Type="Self.KATEGORI" Multiplicity="1" />
+          <End Role="YAZI" Type="Self.YAZI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KATEGORI">
+              <PropertyRef Name="KATEGORI_REFNO" />
+            </Principal>
+            <Dependent Role="YAZI">
+              <PropertyRef Name="KATEGORI_REFNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YORUM_YAZI">
+          <End Role="YAZI" Type="Self.YAZI" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="YORUM" Type="Self.YORUM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YAZI">
+              <PropertyRef Name="YAZI_REFNO" />
+            </Principal>
+            <Dependent Role="YORUM">
+              <PropertyRef Name="YAZI_REFNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BLOGEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="KATEGORIs" EntityType="Self.KATEGORI" />
+          <EntitySet Name="KULLANICIs" EntityType="Self.KULLANICI" />
+          <EntitySet Name="SAYFAs" EntityType="Self.SAYFA" />
+          <EntitySet Name="YAZIs" EntityType="Self.YAZI" />
+          <EntitySet Name="YORUMs" EntityType="Self.YORUM" />
+          <EntitySet Name="VW_YAZI" EntityType="Self.VW_YAZI" />
+          <EntitySet Name="VW_YAZI_YORUM" EntityType="Self.VW_YAZI_YORUM" />
+          <AssociationSet Name="FK_YAZI_KATEGORI" Association="Self.FK_YAZI_KATEGORI">
+            <End Role="KATEGORI" EntitySet="KATEGORIs" />
+            <End Role="YAZI" EntitySet="YAZIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YORUM_YAZI" Association="Self.FK_YORUM_YAZI">
+            <End Role="YAZI" EntitySet="YAZIs" />
+            <End Role="YORUM" EntitySet="YORUMs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BLOGModelStoreContainer" CdmEntityContainer="BLOGEntities1">
+          <EntitySetMapping Name="KATEGORIs">
+            <EntityTypeMapping TypeName="BLOGModel.KATEGORI">
+              <MappingFragment StoreEntitySet="KATEGORI">
+                <ScalarProperty Name="KATEGORI_REFNO" ColumnName="KATEGORI_REFNO" />
+                <ScalarProperty Name="KATEGORI_ADI" ColumnName="KATEGORI_ADI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KULLANICIs">
+            <EntityTypeMapping TypeName="BLOGModel.KULLANICI">
+              <MappingFragment StoreEntitySet="KULLANICI">
+                <ScalarProperty Name="KULLANICI_REFNO" ColumnName="KULLANICI_REFNO" />
+                <ScalarProperty Name="KULLANICI_ADI" ColumnName="KULLANICI_ADI" />
+                <ScalarProperty Name="PAROLA" ColumnName="PAROLA" />
+                <ScalarProperty Name="DURUMU" ColumnName="DURUMU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAYFAs">
+            <EntityTypeMapping TypeName="BLOGModel.SAYFA">
+              <MappingFragment StoreEntitySet="SAYFA">
+                <ScalarProperty Name="SAYFA_REFNO" ColumnName="SAYFA_REFNO" />
+                <ScalarProperty Name="BASLIK" ColumnName="BASLIK" />
+                <ScalarProperty Name="ICERIK" ColumnName="ICERIK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YAZIs">
+            <EntityTypeMapping TypeName="BLOGModel.YAZI">
+              <MappingFragment StoreEntitySet="YAZI">
+                <ScalarProperty Name="YAZI_REFNO" ColumnName="YAZI_REFNO" />
+                <ScalarProperty Name="BASLIK" ColumnName="BASLIK" />
+                <ScalarProperty Name="ICERIK" ColumnName="ICERIK" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="DURUMU" ColumnName="DURUMU" />
+                <ScalarProperty Name="KATEGORI_REFNO" ColumnName="KATEGORI_REFNO" />
+                <ScalarProperty Name="TIKLANMA_SAYISI" ColumnName="TIKLANMA_SAYISI" />
+                <ScalarProperty Name="OZET" ColumnName="OZET" />
+                <ScalarProperty Name="RESIM" ColumnName="RESIM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YORUMs">
+            <EntityTypeMapping TypeName="BLOGModel.YORUM">
+              <MappingFragment StoreEntitySet="YORUM">
+                <ScalarProperty Name="YORUM_REFNO" ColumnName="YORUM_REFNO" />
+                <ScalarProperty Name="YAZI_REFNO" ColumnName="YAZI_REFNO" />
+                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="DURUMU" ColumnName="DURUMU" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="ICERIK" ColumnName="ICERIK" />
+                <ScalarProperty Name="ADI_SOYADI" ColumnName="ADI_SOYADI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_YAZI">
+            <EntityTypeMapping TypeName="BLOGModel.VW_YAZI">
+              <MappingFragment StoreEntitySet="VW_YAZI">
+                <ScalarProperty Name="YAZI_REFNO" ColumnName="YAZI_REFNO" />
+                <ScalarProperty Name="BASLIK" ColumnName="BASLIK" />
+                <ScalarProperty Name="ICERIK" ColumnName="ICERIK" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="RESIM" ColumnName="RESIM" />
+                <ScalarProperty Name="OZET" ColumnName="OZET" />
+                <ScalarProperty Name="TIKLANMA_SAYISI" ColumnName="TIKLANMA_SAYISI" />
+                <ScalarProperty Name="KATEGORI_REFNO" ColumnName="KATEGORI_REFNO" />
+                <ScalarProperty Name="DURUMU" ColumnName="DURUMU" />
+                <ScalarProperty Name="KATEGORI_ADI" ColumnName="KATEGORI_ADI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_YAZI_YORUM">
+            <EntityTypeMapping TypeName="BLOGModel.VW_YAZI_YORUM">
+              <MappingFragment StoreEntitySet="VW_YAZI_YORUM">
+                <ScalarProperty Name="BASLIK" ColumnName="BASLIK" />
+                <ScalarProperty Name="YORUM_REFNO" ColumnName="YORUM_REFNO" />
+                <ScalarProperty Name="YAZI_REFNO" ColumnName="YAZI_REFNO" />
+                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="DURUMU" ColumnName="DURUMU" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="ICERIK" ColumnName="ICERIK" />
+                <ScalarProperty Name="ADI_SOYADI" ColumnName="ADI_SOYADI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
