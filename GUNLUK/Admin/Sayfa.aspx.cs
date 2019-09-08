@@ -26,14 +26,6 @@ namespace GUNLUK.Admin
 
             GridView1.DataSource = db.SAYFAs.ToList();
             GridView1.DataBind();
-
-            if (IsPostBack == false)
-            {
-                ddlBASLIK.DataSource = db.YAZIs.ToList();
-                ddlBASLIK.DataTextField = "BASLIK";
-                ddlBASLIK.DataValueField = "YAZI_REFNO";
-                ddlBASLIK.DataBind();
-            }
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,7 +37,7 @@ namespace GUNLUK.Admin
             {
                 txtSAYFA_REFNO.Text = s.SAYFA_REFNO.ToString();
                 txtICERIK.Text = s.ICERIK;
-                ddlBASLIK.SelectedValue = s.BASLIK.ToString();
+                txtBASLIK.Text = s.BASLIK;
             }
             pnlKayit.Visible = true;
             pnlListe.Visible = false;
@@ -71,7 +63,7 @@ namespace GUNLUK.Admin
         {
             //yeni
             txtSAYFA_REFNO.Text = "";
-            ddlBASLIK.SelectedItem.Text = "";
+            txtBASLIK.Text = "";
             txtICERIK.Text = "";
 
 
@@ -114,15 +106,14 @@ namespace GUNLUK.Admin
                 SAYFA s = db.SAYFAs.Find(refno);
 
                 s.SAYFA_REFNO = Convert.ToInt32(txtSAYFA_REFNO.Text);
-                s.BASLIK = ddlBASLIK.SelectedValue;
+                s.BASLIK = txtBASLIK.Text;
                 s.ICERIK = HttpUtility.HtmlDecode(txtICERIK.Text);
                 db.SaveChanges();
             }
             else
             {
                 SAYFA s = new SAYFA();
-                s.SAYFA_REFNO = Convert.ToInt32(txtSAYFA_REFNO.Text);
-                s.BASLIK = ddlBASLIK.SelectedValue;
+                s.BASLIK = txtBASLIK.Text;
                 s.ICERIK = HttpUtility.HtmlDecode(txtICERIK.Text);
                 db.SaveChanges();
                 db.SAYFAs.Add(s);//yeni kayıt dbset e ekleniyor.

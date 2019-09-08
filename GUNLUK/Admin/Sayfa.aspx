@@ -7,10 +7,7 @@
         .auto-style2 {
             width: 151px;
         }
-        .auto-style3 {
-            margin-bottom: 0px;
-        }
-    </style>
+        </style>
     <script src="/ckeditor/ckeditor.js"></script>
     <script src="/ckfinder/ckfinder.js"></script>
 </asp:Content>
@@ -72,9 +69,8 @@
                     <asp:Label ID="Label4" runat="server" Text="Başlık"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlBASLIK" runat="server" CssClass="auto-style3" Width="175px">
-                    </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Başlık giriniz." ControlToValidate="ddlBASLIK" ValidationGroup="sayfakayitform"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtBASLIK" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Başlık giriniz." ControlToValidate="txtBASLIK" ValidationGroup="sayfakayitform"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>

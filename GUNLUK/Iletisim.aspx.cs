@@ -19,12 +19,12 @@ namespace GUNLUK
         protected void Button1_Click(object sender, EventArgs e)
         {
             MailMessage message = new MailMessage();
-            message.From = new MailAddress("salihaaltnds94@gmail.com", "Saliha Altındiş"); //kimden
+            message.From = new MailAddress("example@gmail.com", "Name Surname"); //kimden
             message.To.Add(txtMail.Text); //kime
             message.Body = txtMesaj.Text;
             message.Subject = txtKonu.Text;
             SmtpClient smtp = new SmtpClient("smtp.gmail.com",587);
-            smtp.Credentials = new NetworkCredential("salihaaltnds94@gmail.com","****");
+            smtp.Credentials = new NetworkCredential("example@gmail.com","Password");
             smtp.EnableSsl = true;//guvenli baglantı için gerekli
             try
             {
